@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro en Seminarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Registro en Seminarios</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('registro_seminarios') }}">Registro de Seminarios</a>
+        <a href="{{ url_for('listado_inscritos') }}">Listado de Inscritos</a>
+    </nav>
+    <main>
+        <h2>Formulario de Inscripción</h2>
+        <form action="{{ url_for('agregar_inscripcion') }}" method="post">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+
+            <label for="turno">Turno:</label>
+            <input type="radio" id="turno_manana" name="turno" value="Mañana" checked>
+            <label for="turno_manana">Mañana</label>
+            <input type="radio" id="turno_tarde" name="turno" value="Tarde">
+            <label for="turno_tarde">Tarde</label>
+            <input type="radio" id="turno_noche" name="turno" value="Noche">
+            <label for="turno_noche">Noche</label>
+
+            <label for="seminarios">Seminarios:</label>
+            <input type="checkbox" id="seminario_ia" name="seminarios" value="Inteligencia Artificial">
+            <label for="seminario_ia">Inteligencia Artificial</label>
+            <input type="checkbox" id="seminario_ml" name="seminarios" value="Machine Learning">
+            <label for="seminario_ml">Machine Learning</label>
+            <input type="checkbox" id="seminario_arena" name="seminarios" value="Simulación con Arena">
+            <label for="seminario_arena">Simulación con Arena</label>
+            <input type="checkbox" id="seminario_robotica" name="seminarios" value="Robótica Educativa">
+            <label for="seminario_robotica">Robótica Educativa</label>
+
+            <button type="submit">Enviar registro</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Registro de Seminarios. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de inscritos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Listado de inscritos</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('registro_seminarios') }}">Registro de Seminarios</a>
+        <a href="{{ url_for('listado_inscritos') }}">Listado de Inscritos</a>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Turno</th>
+                    <th>Seminarios</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscrito in inscritos %}
+                <tr>
+                    <td>{{ inscrito.fecha }}</td>
+                    <td>{{ inscrito.nombre }}</td>
+                    <td>{{ inscrito.apellidos }}</td>
+                    <td>{{ inscrito.turno }}</td>
+                    <td>
+                        {% for seminario in inscrito.seminarios %}
+                        {{ seminario }}<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('editar_inscripcion', index=loop.index0) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ url_for('eliminar_inscripcion', index=loop.index0) }}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Registro de Seminarios. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
